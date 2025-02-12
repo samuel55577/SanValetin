@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Comic Neue", cursive;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f8f6f1;
+}
+
+#encabezado-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#brillo {
+    font-size: 50px;
+    font-weight: bold;
+    color: rgba(255, 0, 102, 0.7);
+    background: linear-gradient(90deg, #ff4081, #ff80ab, #ff4081);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: brillo 3s infinite alternate;
+}
+
+@keyframes brillo {
+    0% {
+        text-shadow: 0 0px 0px rgba(233, 85, 189, 0.2);
+    }
+    100% {
+        text-shadow: 0 0px 15px rgba(233, 85, 189, 0.5);
+    }
+}
+
+.galeria {
+    display: flex;
+    gap: 20px;
+}
+
+.carta {
+    width: 250px;
+    height: 350px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.carta .cara {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.6s;
+}
+
+.frente {
+    background: white;
+}
+
+.frente img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.atras {
+    background: #ff80ab;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    transform: rotateY(180deg);
+}
+
+.carta.volteada .frente {
+    transform: rotateY(180deg);
+}
+
+.carta.volteada .atras {
+    transform: rotateY(360deg);
+}
+
+@media only screen and (max-width: 600px) {
+    #brillo {
+        font-size: 30px;
+    }
+
+    .galeria {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .carta {
+        width: 200px;
+        height: 280px;
+    }
+}
+.carta:hover {
+    box-shadow: 0 0 20px rgba(255, 0, 102, 0.7);
+    transition: box-shadow 0.5s ease-in-out;
+}
+.corazon {
+    position: fixed;
+    bottom: 0;
+    font-size: 20px;
+    color: rgba(255, 0, 102, 0.7);
+    animation: flotar 5s linear infinite;
+}
+
+@keyframes flotar {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+}
+
+
